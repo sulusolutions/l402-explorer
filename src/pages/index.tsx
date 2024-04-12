@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import ExplorerHome from "@/components/explorerHome";
+import ExplorerHome from "@/components/ExplorerHome";
+import MultiStepForm from "@/forms/multistepForms/MultiStepForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,7 +10,8 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
-      <ExplorerHome />
+      {/* <ExplorerHome /> */}
+      <MultiStepForm />
     </main>
   );
 }

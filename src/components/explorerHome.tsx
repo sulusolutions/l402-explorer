@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ExplorerHome = () => {
-  const { register, handleSubmit, getValues } = useForm();
+  const { register, handleSubmit } = useForm();
   const [url, setUrl] = useState<string | null>(null);
   const [preImage, setPreImage] = useState<string | null>(null);
   const [invoice, setInvoice] = useState<string | null>(null);
