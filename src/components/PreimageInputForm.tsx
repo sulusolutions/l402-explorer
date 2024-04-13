@@ -25,6 +25,10 @@ const PreimageForm = ({
 }: PreimageFormProps) => {
   const { isLoading, stopLoading, startLoading } = useLoading();
   const handleSubmit = async () => {
+    if (!preimage.trim()) {
+      alert("Please enter preimage");
+      return;
+    }
     startLoading();
     try {
       const response = await fetch(apiUrl, {
@@ -42,7 +46,7 @@ const PreimageForm = ({
         // TODO: Add in constants
         if (response.status === 402) {
           alert(
-            "Payment Required: You need to pay before accessing this resource."
+            "Invalid preimage. Please try again or enter a valid preimage."
           );
         } else {
           alert("Error: " + response.statusText);
