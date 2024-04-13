@@ -1,3 +1,4 @@
+import useLoading from "@/hooks/useLoading";
 import { FormWrapper } from "./FormWrapper";
 
 type PreimageData = {
@@ -22,7 +23,9 @@ const PreimageForm = ({
   back,
   updateFields,
 }: PreimageFormProps) => {
+  const { isLoading, stopLoading, startLoading } = useLoading();
   const handleSubmit = async () => {
+    startLoading();
     try {
       const response = await fetch(apiUrl, {
         method: "GET",
@@ -34,6 +37,7 @@ const PreimageForm = ({
         const result = await response.json();
         updateFields({ response: JSON.stringify(result) });
         next();
+        stopLoading();
       } else {
         // TODO: Add in constants
         if (response.status === 402) {
@@ -43,15 +47,16 @@ const PreimageForm = ({
         } else {
           alert("Error: " + response.statusText);
         }
+        stopLoading();
       }
     } catch (error) {
-      console.log(error);
       alert(error);
+      stopLoading()
     }
   };
 
   return (
-    <FormWrapper title="Payment Verification">
+    <FormWrapper title="Payment Verification" isLoading={isLoading}>
       <label>Enter Preimage</label>
       <input
         autoFocus

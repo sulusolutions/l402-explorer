@@ -1,5 +1,6 @@
 import { isValidUrl, parseHeader } from "@/utils";
 import { FormWrapper } from "./FormWrapper";
+import useLoading from "@/hooks/useLoading";
 
 type ApiData = {
   apiUrl: string;
@@ -14,9 +15,12 @@ type ApiFormProps = ApiData & {
 };
 
 const ApiForm = ({ apiUrl, next, updateFields }: ApiFormProps) => {
+  const { isLoading, stopLoading, startLoading } = useLoading();
   const handleSubmit = async () => {
+    startLoading();
     if (!isValidUrl(apiUrl)) {
       alert("Please enter a valid url");
+      stopLoading()
       return;
     }
 
@@ -29,13 +33,15 @@ const ApiForm = ({ apiUrl, next, updateFields }: ApiFormProps) => {
       updateFields({ invoice: invoice, macaroon: macaroon });
       console.log({ invoice, macaroon });
       next();
+      stopLoading();
     } catch (error) {
       alert(error);
+      stopLoading();
     }
   };
 
   return (
-    <FormWrapper title="Test L402 API">
+    <FormWrapper title="Test L402 API" isLoading={isLoading}>
       <label>API Url</label>
       <input
         autoFocus
