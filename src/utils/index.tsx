@@ -26,8 +26,16 @@ export const copyToClipboard = async (
     setTimeout(() => {
       setTracker(false);
     }, 1000);
-    console.log("Text copied to clipboard:", text);
   } catch (error) {
     alert("Error copying text to clipboard");
+  }
+};
+
+export const isJSONString = (str: string): boolean => {
+  try {
+    JSON.parse(str);
+    return true;
+  } catch (error) {
+    return false;
   }
 };

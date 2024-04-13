@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 
 export const useMultistepForm = (steps: ReactElement[]) => {
-  const [currentStepIndex, setCurrentStepIndex] = useState(3);
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
   const next = () => {
     setCurrentStepIndex((i) => {

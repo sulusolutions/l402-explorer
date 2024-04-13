@@ -19,8 +19,6 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
   const [invoiceCopied, setInvoiceCopied] = useState(false);
   const [macaroonCopied, setMacaroonCopied] = useState(false);
 
-  
-
   return (
     <FormWrapper title="Payment Details">
       <div className="py-5">
