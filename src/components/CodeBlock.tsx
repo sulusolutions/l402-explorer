@@ -7,13 +7,6 @@ type CodeBlockProps = {
 };
 
 const CodeBlock = ({ code }: CodeBlockProps) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  };
-
   return (
     <div className="relative w-full">
       <SyntaxHighlighter
@@ -23,14 +16,6 @@ const CodeBlock = ({ code }: CodeBlockProps) => {
       >
         {code}
       </SyntaxHighlighter>
-      {/* <CopyToClipboard text={code} onCopy={handleCopy}>
-        <button
-          className="absolute top-2 right-2 z-10 bg-none border-none text-blue-500 cursor-pointer"
-          aria-label={copied ? 'Copied!' : 'Copy to clipboard'}
-        >
-          {copied ? 'Copied!' : <FileCopyOutlined />}
-        </button>
-      </CopyToClipboard> */}
     </div>
   );
 };

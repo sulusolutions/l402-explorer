@@ -61,7 +61,7 @@ const MultiStepForm = () => {
   ]);
 
   return (
-    <div className="relative bg-[#161B22] rounded-xl p-12 m-4">
+    <div className="relative bg-[#161B22] max-w-[600px] rounded-xl p-12 m-4">
       <div className="absolute top-0 right-0 mt-2 mr-2 p-5">
         {currentStepIndex + 1} / {steps.length}
       </div>

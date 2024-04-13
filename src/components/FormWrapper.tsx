@@ -19,8 +19,8 @@ export function FormWrapper({
       <div>
         {children}
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-            <p className="text-white">Loading...</p>
+          <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black bg-opacity-70 z-50">
+            <p className="text-white text-lg">Loading...</p>
           </div>
         )}
       </div>
