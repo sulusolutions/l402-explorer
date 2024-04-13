@@ -51,30 +51,34 @@ const PreimageForm = ({
       }
     } catch (error) {
       alert(error);
-      stopLoading()
+      stopLoading();
     }
   };
 
   return (
     <FormWrapper title="Payment Verification" isLoading={isLoading}>
-      <label>Enter Preimage</label>
-      <input
-        autoFocus
-        required
-        type="text"
-        value={preimage}
-        onChange={(e) => updateFields({ preimage: e.target.value })}
-        style={{ border: "solid" }}
-      />
-      <div
-        style={{
-          marginTop: "1rem",
-          display: "flex",
-          gap: ".5rem",
-        }}
-      >
-        <button onClick={back}>Back</button>
-        <button onClick={handleSubmit}>Next</button>
+      <div className="py-5">
+        <label className="block text-md font-medium mb-2">Preimage</label>
+        <textarea
+          className="flex h-24 w-full rounded-md border border-input px-3 py-2 text-md ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#1A1A1A]"
+          placeholder="Enter the preimage"
+          value={preimage}
+          onChange={(e) => updateFields({ preimage: e.target.value })}
+        />
+      </div>
+      <div className="flex justify-between mt-2">
+        <button
+          onClick={back}
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700"
+        >
+          Back
+        </button>
+        <button
+          onClick={handleSubmit}
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700"
+        >
+          Next
+        </button>
       </div>
     </FormWrapper>
   );

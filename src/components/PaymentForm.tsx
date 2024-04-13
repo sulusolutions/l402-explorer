@@ -37,9 +37,8 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
   return (
     <FormWrapper title="Payment Details">
       <div className="py-5">
-        <label className="block text-md font-medium mb-2">Invoice</label>
-        <div className="flex">
-          <CodeBlock code={invoice} />
+        <div className="flex justify-between">
+          <label className="block text-md font-medium mb-2">Invoice</label>
           <button
             className="ml-2 bg-transparent border-none cursor-pointer"
             onClick={() => copyToClipboard(invoice, setInvoiceCopied)}
@@ -47,11 +46,12 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
             {invoiceCopied ? <CheckCircleOutlineIcon /> : <FileCopyIcon />}
           </button>
         </div>
+
+        <CodeBlock code={invoice} />
       </div>
       <div className="py-5">
-        <label className="block text-md font-medium mb-2">Macaroon</label>
-        <div className="flex">
-          <CodeBlock code={macaroon} />
+        <div className="flex justify-between">
+          <label className="block text-md font-medium mb-2">Macaroon</label>
           <button
             className="ml-2 bg-transparent border-none cursor-pointer"
             onClick={() => copyToClipboard(macaroon, setMacaroonCopied)}
@@ -59,6 +59,7 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
             {macaroonCopied ? <CheckCircleOutlineIcon /> : <FileCopyIcon />}
           </button>
         </div>
+        <CodeBlock code={macaroon} />
       </div>
       <div className="flex justify-between mt-2">
         <button

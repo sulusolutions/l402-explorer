@@ -46,7 +46,7 @@ const ApiForm = ({ apiUrl, next, updateFields }: ApiFormProps) => {
         <div className="py-5">
           <label className="block text-md font-medium mb-2">API URL</label>
           <input
-            className="flex h-12 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#1A1A1A]"
+            className="flex h-12 w-full rounded-md border border-input px-3 py-2 text-md ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#1A1A1A]"
             placeholder="Enter an L402 API URL"
             type="text"
             value={apiUrl}

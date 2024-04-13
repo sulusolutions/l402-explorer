@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { FileCopyOutlined } from "@mui/icons-material";
 
 type CodeBlockProps = {
   code: string;
@@ -8,11 +7,14 @@ type CodeBlockProps = {
 
 const CodeBlock = ({ code }: CodeBlockProps) => {
   return (
-    <div className="relative w-full">
+    <div className="w-full code-block">
       <SyntaxHighlighter
         language="javascript"
         wrapLines={true}
         wrapLongLines={true}
+        lineProps={{
+          style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
+        }}
       >
         {code}
       </SyntaxHighlighter>
