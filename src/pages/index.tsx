@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import ExplorerHome from "@/components/ExplorerHome";
-import MultiStepForm from "@/forms/multistepForms/MultiStepForm";
+import MultiStepForm from "@/components/MultiStepForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
