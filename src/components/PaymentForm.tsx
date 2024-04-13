@@ -3,6 +3,7 @@ import CodeBlock from "./CodeBlock";
 import { FormWrapper } from "./FormWrapper";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { copyToClipboard } from "@/utils";
 
 type PaymentData = {
   invoice: string;
@@ -18,21 +19,7 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
   const [invoiceCopied, setInvoiceCopied] = useState(false);
   const [macaroonCopied, setMacaroonCopied] = useState(false);
 
-  const copyToClipboard = async (
-    text: string,
-    setTracker: (value: boolean) => void
-  ) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setTracker(true);
-      setTimeout(() => {
-        setTracker(false);
-      }, 1000);
-      console.log("Text copied to clipboard:", text);
-    } catch (error) {
-      alert("Error copying text to clipboard");
-    }
-  };
+  
 
   return (
     <FormWrapper title="Payment Details">

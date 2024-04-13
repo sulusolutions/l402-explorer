@@ -15,6 +15,10 @@ const CodeBlock = ({ code }: CodeBlockProps) => {
         lineProps={{
           style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
         }}
+        customStyle={{
+          maxHeight: "calc(100vh - 350px)",
+          overflow: "auto",
+        }}
       >
         {code}
       </SyntaxHighlighter>

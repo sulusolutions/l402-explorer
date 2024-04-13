@@ -57,7 +57,7 @@ const MultiStepForm = () => {
       next={gotoNextStep}
       back={gotoPreviousStep}
     />,
-    <ResponseForm key="response" {...data} back={gotoPreviousStep} />,
+    <ResponseForm key="response" {...data} />,
   ]);
 
   return (

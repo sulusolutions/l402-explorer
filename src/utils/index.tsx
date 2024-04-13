@@ -15,3 +15,19 @@ export const isValidUrl = (url: string): boolean => {
   const pattern = /^(ftp|http|https):\/\/[^ "]+$/;
   return !!pattern.test(url);
 };
+
+export const copyToClipboard = async (
+  text: string,
+  setTracker: (value: boolean) => void
+) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    setTracker(true);
+    setTimeout(() => {
+      setTracker(false);
+    }, 1000);
+    console.log("Text copied to clipboard:", text);
+  } catch (error) {
+    alert("Error copying text to clipboard");
+  }
+};
