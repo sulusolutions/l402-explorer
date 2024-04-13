@@ -37,22 +37,28 @@ const MultiStepForm = () => {
     back();
   };
 
-  const { steps, currentStepIndex, step, back, next } =
-    useMultistepForm([
-      <ApiInputForm
-        {...data}
-        updateFields={updateFields}
-        next={gotoNextStep}
-      />,
-      <PaymentForm {...data} next={gotoNextStep} back={gotoPreviousStep} />,
-      <PreimageForm
-        {...data}
-        updateFields={updateFields}
-        next={gotoNextStep}
-        back={gotoPreviousStep}
-      />,
-      <ResponseForm {...data} back={gotoPreviousStep} />,
-    ]);
+  const { steps, currentStepIndex, step, back, next } = useMultistepForm([
+    <ApiInputForm
+      key="apiInput"
+      {...data}
+      updateFields={updateFields}
+      next={gotoNextStep}
+    />,
+    <PaymentForm
+      key="payment"
+      {...data}
+      next={gotoNextStep}
+      back={gotoPreviousStep}
+    />,
+    <PreimageForm
+      key="preimage"
+      {...data}
+      updateFields={updateFields}
+      next={gotoNextStep}
+      back={gotoPreviousStep}
+    />,
+    <ResponseForm key="response" {...data} back={gotoPreviousStep} />,
+  ]);
 
   return (
     <div
