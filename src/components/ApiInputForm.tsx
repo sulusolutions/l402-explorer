@@ -27,11 +27,15 @@ const ApiForm = ({ apiUrl, next, updateFields }: ApiFormProps) => {
     try {
       const response = await fetch(apiUrl);
       const headersData = Object.fromEntries(response.headers.entries());
+      if (!headersData["www-authenticate"]) {
+        alert("Please enter a valid L402 url");
+        stopLoading();
+        return;
+      }
       const { macaroon, invoice } = parseHeader(
         headersData["www-authenticate"]
       );
       updateFields({ invoice: invoice, macaroon: macaroon });
-      console.log({ invoice, macaroon });
       next();
       stopLoading();
     } catch (error) {
@@ -50,7 +54,7 @@ const ApiForm = ({ apiUrl, next, updateFields }: ApiFormProps) => {
             placeholder="Enter an L402 API URL"
             type="text"
             value={apiUrl}
-            onChange={(e) => updateFields({ apiUrl: e.target.value })}
+            onChange={(e) => updateFields({ apiUrl: e.target.value.trim() })}
           />
         </div>
         <div className="flex justify-end mt-2">
