@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 
 type FormWrapperProps = {
   title: string;
@@ -12,38 +12,18 @@ export function FormWrapper({
   children,
 }: FormWrapperProps) {
   return (
-    <>
-      <h2 style={{ textAlign: "center", margin: 0, marginBottom: "2rem" }}>
+    <div className="md:min-w-[400px] mx-auto">
+      <h2 className="text-2xl md:text-4xl text-center text-black font-extrabold leading-tighter tracking-tight mt-3 py-5">
         {title}
       </h2>
-      <div
-        style={{
-          display: "grid",
-          gap: "1rem .5rem",
-          justifyContent: "flex-start",
-          gridTemplateColumns: "auto minmax(auto, 400px)",
-        }}
-      >
+      <div>
         {children}
         {isLoading && (
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              background: "rgba(255, 255, 255, 0.8)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 9999,
-            }}
-          >
-            <p>Loading...</p>
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <p className="text-white">Loading...</p>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
