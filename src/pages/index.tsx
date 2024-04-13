@@ -1,16 +1,18 @@
 import React from "react";
 import { Inter } from "next/font/google";
 import MultiStepForm from "@/components/MultiStepForm";
-import ExplorerHome from "@/components/ExplorerHome";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <main
-      className={`flex min-h-screen text-white flex-col items-center justify-center ${inter.className}`}
+      className={`flex min-h-screen text-white flex-col gap-5 items-center justify-center ${inter.className}`}
     >
-      {/* <ExplorerHome /> */}
+      <img
+        src="https://framerusercontent.com/images/IXr0RynQNk25lFOjoZoU7DJRpc.png"
+        width={180}
+      />
       <MultiStepForm />
     </main>
   );
