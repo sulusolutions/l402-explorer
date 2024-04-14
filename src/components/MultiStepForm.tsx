@@ -31,12 +31,17 @@ const MultiStepForm = () => {
     back();
   };
 
-  const { steps, currentStepIndex, step, back, next } = useMultistepForm([
+  const jumpToLastStep=()=>{
+    goToLastStep()
+  }
+
+  const { steps, currentStepIndex, step, back, next, goToLastStep } = useMultistepForm([
     <ApiInputForm
       key="apiInput"
       {...data}
       updateFields={updateFields}
       next={gotoNextStep}
+      goToLastStep={jumpToLastStep}
     />,
     <PaymentForm
       key="payment"

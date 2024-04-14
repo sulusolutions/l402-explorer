@@ -21,11 +21,16 @@ export const useMultistepForm = (steps: ReactElement[]) => {
     setCurrentStepIndex(index);
   };
 
+  const goToLastStep = () => {
+    setCurrentStepIndex(steps.length - 1);
+  };
+
   return {
     currentStepIndex,
     step: steps[currentStepIndex],
     steps,
     goTo,
+    goToLastStep,
     next,
     back,
   };

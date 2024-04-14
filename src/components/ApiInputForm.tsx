@@ -4,6 +4,7 @@ import useLoading from "@/hooks/useLoading";
 import { FormData } from "@/types";
 import Button from "./Button";
 import Input from "./Input";
+import { STATUS_CODES } from "@/constants";
 
 type ApiData = {
   apiUrl: string;
@@ -12,14 +13,20 @@ type ApiData = {
 type ApiFormProps = ApiData & {
   updateFields: (fields: Partial<FormData>) => void;
   next: () => void;
+  goToLastStep: () => void;
 };
 
-const ApiForm = ({ apiUrl, next, updateFields }: ApiFormProps) => {
+const ApiForm = ({
+  apiUrl,
+  next,
+  updateFields,
+  goToLastStep,
+}: ApiFormProps) => {
   const { isLoading, stopLoading, startLoading } = useLoading();
 
   const handleSubmit = async () => {
     startLoading();
-    
+
     if (!isValidUrl(apiUrl)) {
       alert("Please enter a valid url");
       stopLoading();
@@ -29,17 +36,18 @@ const ApiForm = ({ apiUrl, next, updateFields }: ApiFormProps) => {
     try {
       const response = await fetch(apiUrl);
       const headersData = Object.fromEntries(response.headers.entries());
-      if (!headersData["www-authenticate"]) {
-        alert("Please enter a valid L402 url");
+      if (response.ok) {
+        const data = await response.json();
+        updateFields({ response: JSON.stringify(data) });
+        goToLastStep();
+      } else if (response.status === STATUS_CODES.PAYMENT_REQUIRED) {
+        const { macaroon, invoice } = parseHeader(
+          headersData["www-authenticate"]
+        );
+        updateFields({ invoice: invoice, macaroon: macaroon });
+        next();
         stopLoading();
-        return;
       }
-      const { macaroon, invoice } = parseHeader(
-        headersData["www-authenticate"]
-      );
-      updateFields({ invoice: invoice, macaroon: macaroon });
-      next();
-      stopLoading();
     } catch (error) {
       alert(error);
       stopLoading();

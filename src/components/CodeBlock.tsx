@@ -7,9 +7,15 @@ import { isJSONString } from "@/utils";
 
 type CodeBlockProps = {
   code: string;
+  startLoading?: () => void;
+  stopLoading?: () => void;
 };
 
-const CodeBlock = ({ code }: CodeBlockProps) => {
+const CodeBlock = ({
+  code,
+  startLoading = () => {},
+  stopLoading = () => {},
+}: CodeBlockProps) => {
   const [formattedCode, setFormattedCode] = useState<string>(code);
 
   useEffect(() => {
@@ -20,10 +26,14 @@ const CodeBlock = ({ code }: CodeBlockProps) => {
           plugins: [babel, esTree],
         });
         setFormattedCode(formattedCode);
+        stopLoading();
       } catch (error) {
         alert(error);
+        stopLoading();
       }
     };
+
+    startLoading();
     if (isJSONString(code)) getFormattedCode();
   }, [code]);
 

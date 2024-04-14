@@ -3,12 +3,14 @@ import { ReactNode } from "react";
 type FormWrapperProps = {
   title: string;
   isLoading?: boolean;
+  loadingText?: string;
   children: ReactNode;
 };
 
 export function FormWrapper({
   title,
   isLoading = false,
+  loadingText = "Loading...",
   children,
 }: FormWrapperProps) {
   return (
@@ -20,7 +22,7 @@ export function FormWrapper({
         {children}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black bg-opacity-70 z-50">
-            <p className="text-white text-lg">Loading...</p>
+            <p className="text-white text-lg">{loadingText}</p>
           </div>
         )}
       </div>

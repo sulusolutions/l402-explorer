@@ -1,6 +1,6 @@
 import useLoading from "@/hooks/useLoading";
 import { FormWrapper } from "./FormWrapper";
-import { ERROR_CODES } from "@/constants";
+import { STATUS_CODES } from "@/constants";
 import Button from "./Button";
 import { FormData } from "@/types";
 
@@ -46,7 +46,7 @@ const PreimageForm = ({
         next();
         stopLoading();
       } else {
-        if (response.status === ERROR_CODES.PAYMENT_REQUIRED) {
+        if (response.status === STATUS_CODES.PAYMENT_REQUIRED) {
           alert(
             "Invalid preimage. Please try again or enter a valid preimage."
           );
