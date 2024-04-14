@@ -7,15 +7,9 @@ import { isJSONString } from "@/utils";
 
 type CodeBlockProps = {
   code: string;
-  startLoading?: () => void;
-  stopLoading?: () => void;
 };
 
-const CodeBlock = ({
-  code,
-  startLoading = () => {},
-  stopLoading = () => {},
-}: CodeBlockProps) => {
+const CodeBlock = ({ code }: CodeBlockProps) => {
   const [formattedCode, setFormattedCode] = useState<string>(code);
 
   useEffect(() => {

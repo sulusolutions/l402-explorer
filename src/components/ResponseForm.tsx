@@ -13,12 +13,9 @@ type ResponseFormProps = {
 function ResponseForm({ response }: ResponseFormProps) {
   const [responseCopied, setResponseCopied] = useState(false);
   const { isLoading, stopLoading, startLoading } = useLoading();
-  
+
   return (
-    <FormWrapper
-      title="Response"
-      isLoading={isLoading}
-    >
+    <FormWrapper title="Response" isLoading={isLoading}>
       <div className="py-5">
         <div className="flex justify-between">
           <label className="block text-md font-medium mb-2">API Response</label>
@@ -29,11 +26,7 @@ function ResponseForm({ response }: ResponseFormProps) {
             {responseCopied ? <CheckCircleOutlineIcon /> : <FileCopyIcon />}
           </button>
         </div>
-        <CodeBlock
-          code={response}
-          stopLoading={stopLoading}
-          startLoading={startLoading}
-        />
+        <CodeBlock code={response} />
       </div>
     </FormWrapper>
   );
