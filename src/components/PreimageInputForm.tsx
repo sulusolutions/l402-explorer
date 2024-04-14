@@ -41,8 +41,8 @@ const PreimageForm = ({
         },
       });
       if (response.ok) {
-        const result = await response.json();
-        updateFields({ response: JSON.stringify(result) });
+        const data = await response.json();
+        updateFields({ response: JSON.stringify(data) });
         next();
         stopLoading();
       } else {

@@ -35,12 +35,12 @@ const ApiForm = ({
 
     try {
       const response = await fetch(apiUrl);
-      const headersData = Object.fromEntries(response.headers.entries());
       if (response.ok) {
         const data = await response.json();
         updateFields({ response: JSON.stringify(data) });
         goToLastStep();
       } else if (response.status === STATUS_CODES.PAYMENT_REQUIRED) {
+        const headersData = Object.fromEntries(response.headers.entries());
         const { macaroon, invoice } = parseHeader(
           headersData["www-authenticate"]
         );
