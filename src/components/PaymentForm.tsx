@@ -4,6 +4,7 @@ import { FormWrapper } from "./FormWrapper";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { copyToClipboard } from "@/utils";
+import Button from "./Button";
 
 type PaymentData = {
   invoice: string;
@@ -31,7 +32,6 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
             {invoiceCopied ? <CheckCircleOutlineIcon /> : <FileCopyIcon />}
           </button>
         </div>
-
         <CodeBlock code={invoice} />
       </div>
       <div className="py-5">
@@ -47,18 +47,8 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
         <CodeBlock code={macaroon} />
       </div>
       <div className="flex justify-between mt-2">
-        <button
-          onClick={back}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700"
-        >
-          Back
-        </button>
-        <button
-          onClick={next}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700"
-        >
-          Next
-        </button>
+        <Button onClick={back}>Back</Button>
+        <Button onClick={next}>Next</Button>
       </div>
     </FormWrapper>
   );

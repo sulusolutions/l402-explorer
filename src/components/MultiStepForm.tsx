@@ -1,17 +1,10 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useMultistepForm } from "../hooks/useMultistepForm";
 import ApiInputForm from "./ApiInputForm";
 import PaymentForm from "./PaymentForm";
 import PreimageForm from "./PreimageInputForm";
 import ResponseForm from "./ResponseForm";
-
-type FormData = {
-  apiUrl: string;
-  invoice: string;
-  macaroon: string;
-  preimage: string;
-  response: string;
-};
+import { FormData } from "@/types";
 
 const INITIAL_DATA: FormData = {
   apiUrl: "",
@@ -22,7 +15,8 @@ const INITIAL_DATA: FormData = {
 };
 
 const MultiStepForm = () => {
-  const [data, setData] = useState(INITIAL_DATA);
+  const [data, setData] = useState<FormData>(INITIAL_DATA);
+
   const updateFields = (fields: Partial<FormData>) => {
     setData((prev) => {
       return { ...prev, ...fields };

@@ -10,7 +10,9 @@ export default function Home() {
     <main
       className={`flex min-h-screen text-white flex-col gap-5 items-center justify-center ${inter.className}`}
     >
-      <img src={LOGO_URL} width={180} />
+      <a href="/">
+        <img src={LOGO_URL} width={180} />
+      </a>
       <MultiStepForm />
     </main>
   );

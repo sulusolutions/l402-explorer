@@ -1,17 +1,18 @@
 import useLoading from "@/hooks/useLoading";
 import { FormWrapper } from "./FormWrapper";
 import { ERROR_CODES } from "@/constants";
+import Button from "./Button";
+import { FormData } from "@/types";
 
 type PreimageData = {
   preimage: string;
-  response: string;
 };
 
 type PreimageFormProps = PreimageData & {
   apiUrl: string;
   macaroon: string;
   preimage: string;
-  updateFields: (fields: Partial<PreimageData>) => void;
+  updateFields: (fields: Partial<FormData>) => void;
   next: () => void;
   back: () => void;
 };
@@ -25,6 +26,7 @@ const PreimageForm = ({
   updateFields,
 }: PreimageFormProps) => {
   const { isLoading, stopLoading, startLoading } = useLoading();
+
   const handleSubmit = async () => {
     if (!preimage.trim()) {
       alert("Please enter preimage");
@@ -64,25 +66,15 @@ const PreimageForm = ({
       <div className="py-5">
         <label className="block text-md font-medium mb-2">Preimage</label>
         <textarea
-          className="flex h-24 w-full rounded-md border border-input px-3 py-2 text-md ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#1A1A1A]"
+          className="h-24 w-full rounded-md border border-gray-300 px-3 py-2 text-md text-gray-900 focus:outline-none focus:ring focus:border-blue-300 bg-gray-100 placeholder-gray-400"
           placeholder="Enter the preimage"
           value={preimage}
           onChange={(e) => updateFields({ preimage: e.target.value.trim() })}
         />
       </div>
       <div className="flex justify-between mt-2">
-        <button
-          onClick={back}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700"
-        >
-          Back
-        </button>
-        <button
-          onClick={handleSubmit}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700"
-        >
-          Next
-        </button>
+        <Button onClick={back}>Back</Button>
+        <Button onClick={handleSubmit}>Next</Button>
       </div>
     </FormWrapper>
   );
