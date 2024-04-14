@@ -5,6 +5,7 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { copyToClipboard } from "@/utils";
 import Button from "./Button";
+import QRCode from "react-qr-code";
 
 type PaymentData = {
   invoice: string;
@@ -22,8 +23,10 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
 
   return (
     <FormWrapper title="Payment Details">
-      <div className="py-5">
-        <div className="flex justify-between">
+      <div
+        className="py-2 flex flex-col items-center"
+      >
+        <div className="w-full flex justify-between">
           <label className="block text-md font-medium mb-2">Invoice</label>
           <button
             className="ml-2 bg-transparent border-none cursor-pointer"
@@ -33,6 +36,9 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
           </button>
         </div>
         <CodeBlock code={invoice} />
+        <div className="m-4 p-4 bg-white inline-block">
+          <QRCode value={invoice} size={120} />
+        </div>
       </div>
       <div className="py-5">
         <div className="flex justify-between">
