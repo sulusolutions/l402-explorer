@@ -26,15 +26,14 @@ const CodeBlock = ({
           plugins: [babel, esTree],
         });
         setFormattedCode(formattedCode);
-        stopLoading();
       } catch (error) {
         alert(error);
-        stopLoading();
       }
     };
 
-    startLoading();
-    if (isJSONString(code)) getFormattedCode();
+    if (isJSONString(code)) {
+      getFormattedCode();
+    }
   }, [code]);
 
   return (

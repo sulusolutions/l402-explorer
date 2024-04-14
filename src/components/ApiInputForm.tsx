@@ -24,7 +24,7 @@ const ApiForm = ({
 }: ApiFormProps) => {
   const { isLoading, stopLoading, startLoading } = useLoading();
 
-  const handleSubmit = async () => {
+  const handleClick = async () => {
     startLoading();
 
     if (!isValidUrl(apiUrl)) {
@@ -66,7 +66,7 @@ const ApiForm = ({
         />
       </div>
       <div className="flex justify-end mt-2">
-        <Button onClick={handleSubmit}>Next</Button>
+        <Button onClick={handleClick}>Next</Button>
       </div>
     </FormWrapper>
   );

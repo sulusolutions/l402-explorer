@@ -18,7 +18,6 @@ function ResponseForm({ response }: ResponseFormProps) {
     <FormWrapper
       title="Response"
       isLoading={isLoading}
-      loadingText="Formatting..."
     >
       <div className="py-5">
         <div className="flex justify-between">

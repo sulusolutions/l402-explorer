@@ -27,7 +27,7 @@ const PreimageForm = ({
 }: PreimageFormProps) => {
   const { isLoading, stopLoading, startLoading } = useLoading();
 
-  const handleSubmit = async () => {
+  const handleClick = async () => {
     if (!preimage.trim()) {
       alert("Please enter preimage");
       return;
@@ -74,7 +74,7 @@ const PreimageForm = ({
       </div>
       <div className="flex justify-between mt-2">
         <Button onClick={back}>Back</Button>
-        <Button onClick={handleSubmit}>Next</Button>
+        <Button onClick={handleClick}>Next</Button>
       </div>
     </FormWrapper>
   );
