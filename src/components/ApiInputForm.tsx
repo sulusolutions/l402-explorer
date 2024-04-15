@@ -47,10 +47,10 @@ const ApiForm = ({
         );
         updateFields({ invoice: invoice, macaroon: macaroon });
         next();
-        stopLoading();
       }
     } catch (error) {
       alert(error);
+    } finally {
       stopLoading();
     }
   };

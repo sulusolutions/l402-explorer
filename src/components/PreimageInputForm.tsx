@@ -45,7 +45,6 @@ const PreimageForm = ({
         const data = await response.json();
         updateFields({ response: JSON.stringify(data) });
         next();
-        stopLoading();
       } else {
         if (response.status === STATUS_CODES.PAYMENT_REQUIRED) {
           alert(
@@ -54,10 +53,10 @@ const PreimageForm = ({
         } else {
           alert("Error: " + response.statusText);
         }
-        stopLoading();
       }
     } catch (error) {
       alert(error);
+    } finally {
       stopLoading();
     }
   };
