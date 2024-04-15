@@ -12,7 +12,7 @@ type ResponseFormProps = {
 
 function ResponseForm({ response }: ResponseFormProps) {
   const [responseCopied, setResponseCopied] = useState(false);
-  const { isLoading, stopLoading, startLoading } = useLoading();
+  const { isLoading } = useLoading();
 
   return (
     <FormWrapper title="Response" isLoading={isLoading}>

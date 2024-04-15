@@ -26,7 +26,6 @@ const ApiForm = ({
 
   const handleClick = async () => {
     startLoading();
-
     if (!isValidUrl(apiUrl)) {
       alert("Please enter a valid url");
       stopLoading();
@@ -36,10 +35,12 @@ const ApiForm = ({
     try {
       const response = await fetch(apiUrl);
       if (response.ok) {
+        // If the API returns a valid response
         const data = await response.json();
         updateFields({ response: JSON.stringify(data) });
         goToLastStep();
       } else if (response.status === STATUS_CODES.PAYMENT_REQUIRED) {
+        // If the API returns a 402 Payment Required response
         const headersData = Object.fromEntries(response.headers.entries());
         const { macaroon, invoice } = parseHeader(
           headersData["www-authenticate"]

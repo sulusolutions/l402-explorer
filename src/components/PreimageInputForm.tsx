@@ -34,6 +34,7 @@ const PreimageForm = ({
     }
     startLoading();
     try {
+      // Send a request to the API with new L402 token
       const response = await fetch(apiUrl, {
         method: "GET",
         headers: {

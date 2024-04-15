@@ -40,6 +40,7 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
           <QRCode value={invoice} size={120} />
         </div>
       </div>
+
       <div className="py-5">
         <div className="flex justify-between">
           <label className="block text-md font-medium mb-2">Macaroon</label>
@@ -52,6 +53,7 @@ function PaymentForm({ invoice, macaroon, next, back }: PaymentFormProps) {
         </div>
         <CodeBlock code={macaroon} />
       </div>
+      
       <div className="flex justify-between mt-2">
         <Button onClick={back}>Back</Button>
         <Button onClick={next}>Next</Button>
